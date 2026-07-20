@@ -1,0 +1,4 @@
+interface:
+  display_name: "口播大纲动效剪辑"
+  short_description: "按口播节奏添加大纲、标题、字幕和MG动画节点能力。"
+  default_prompt: "帮我分析这个口播视频，按说话内容添加大纲/标题节点和MG动画；如果没有字幕，先补字幕。"
