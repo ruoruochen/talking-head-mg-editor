@@ -1,52 +1,52 @@
-# Iteration Record
+# 迭代记录
 
 ## 2026-07-20
 
-### Initial Skill
+### 初始版本
 
-Created `talking-head-mg-editor` for Chinese talking-head video editing in ChatCut.
+创建 `talking-head-mg-editor`，用于在 ChatCut 中剪辑中文口播视频。
 
-Capabilities added:
+新增能力：
 
-- Add transcript-synced outline nodes.
-- Add section titles and keyword pop-ups.
-- Add comparison callouts with `✅` / `❌`.
-- Align MG timing to actual spoken words instead of fixed animation timing.
-- Avoid covering existing subtitles, face, mouth, and important gestures.
-- Add captions first when a video has no subtitles.
+- 添加与 transcript 对齐的大纲节点。
+- 添加章节标题和关键词弹出。
+- 添加带 `✅` / `❌` 的对比提示。
+- MG 动效时间跟真实说话内容对齐，而不是按固定动画节奏出现。
+- 避免遮挡已有字幕、人脸、嘴部和重要手势。
+- 视频没有字幕时，先补字幕再安排 MG 位置。
 
-### Cover As First Frame
+### 封面作为第一帧
 
-Added cover image workflow.
+曾新增封面图流程。
 
-Capabilities added:
+当时新增能力：
 
-- Ask for video series and episode number before cover design.
-- Support cover image creation or use an existing cover image.
-- Place cover image as the first frame/opening still in ChatCut.
-- Preserve downstream subtitle/MG timing when inserting a cover at the beginning.
-- For the `表达力觉醒` series, require the fixed top label: `🔥表达力觉醒 第x期`.
+- 制作封面前询问视频系列和期数。
+- 支持创建封面图或使用用户已有封面图。
+- 支持把封面图作为 ChatCut 时间线的第一帧或开头静帧。
+- 插入封面后，保持后续字幕和 MG 时间同步。
+- 对 `表达力觉醒` 系列，要求顶部固定格式为：`🔥表达力觉醒 第x期`。
 
-### Chinese Documentation
+### 中文说明文档
 
-Added human-readable Chinese documentation.
+新增面向用户阅读的中文说明。
 
-Capabilities added:
+新增能力：
 
-- Keep `SKILL.md` in English for model execution stability.
-- Add `README.zh-CN.md` so the user can understand the skill in Chinese.
+- `SKILL.md` 保持英文执行版，提高模型执行稳定性。
+- 新增 `README.zh-CN.md`，方便用户用中文理解这个 skill 的作用和规则。
 
-### Geometry, Node References, And Cover Removal
+### 视频比例、节点参考图与封面移除
 
-Updated the skill after user review of an `表达力觉醒` edit.
+根据一次 `表达力觉醒` 剪辑的用户检查反馈，更新 skill。
 
-Changes made:
+变更内容：
 
-- Removed cover image generation and cover-as-first-frame behavior from this skill.
-- Added a rule that standalone cover images must be handled outside this talking-head editing workflow unless the user explicitly asks for a video intro card.
-- Added geometry verification before MG work so vertical 9:16 talking-head footage is not distorted by stale horizontal crop/scale values.
-- Stored approved visual references in `assets/title-node-reference.png` and `assets/list-term-reference.png`.
-- Required Codex to visually inspect those assets before making title nodes or list/term nodes.
-- Fixed title node guidance to use the pink upper-left style with white outline and black shadow.
-- Fixed list/term guidance to use the yellow black-stroke two-column style without cards or panels.
-- Added the maintenance rule that future skill changes must update `SKILL.md`, `README.md`, `README.zh-CN.md`, and `ITERATIONS.md` together before publishing.
+- 从这个 skill 中移除封面图生成和“封面作为第一帧”的行为。
+- 新增规则：独立封面图应作为这个口播剪辑 skill 之外的单独任务处理；除非用户明确要求视频片头卡，否则不要把封面混进 ChatCut 时间线。
+- 新增 MG 前的视频几何检查，避免竖屏 9:16 口播视频被旧的横屏裁切 / 缩放参数拉伸变形。
+- 将用户确认过的参考图保存到 `assets/title-node-reference.png` 和 `assets/list-term-reference.png`。
+- 要求 Codex 在制作标题节点或罗列 / 名词节点前，必须实际打开并检查这些参考图，不能只凭文字描述或记忆。
+- 固定标题节点风格：左上方粉色粗标题、白色描边、黑色阴影。
+- 固定罗列 / 名词节点风格：黄色粗字、黑色描边、两列排布，不使用卡片或面板。
+- 新增维护规则：以后更新这个 skill 时，必须同步更新 `SKILL.md`、`README.md`、`README.zh-CN.md` 和 `ITERATIONS.md` 后再发布。
